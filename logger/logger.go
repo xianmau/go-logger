@@ -1,5 +1,7 @@
 package logger
 
+import "fmt"
+
 //	"log"
 
 const (
@@ -131,6 +133,9 @@ func Debug(v ...interface{}) {
 	//	}
 	defaultlog.debug(v...)
 }
+func Debugf(format string, v ...interface{}) {
+	defaultlog.debug(fmt.Sprintf(format, v...))
+}
 func Info(v ...interface{}) {
 	//	if dailyRolling {
 	//		fileCheck()
@@ -152,6 +157,9 @@ func Info(v ...interface{}) {
 	//	}
 	defaultlog.info(v...)
 }
+func Infof(format string, v ...interface{}) {
+	defaultlog.info(fmt.Sprintf(format, v...))
+}
 func Warn(v ...interface{}) {
 	//	if dailyRolling {
 	//		fileCheck()
@@ -168,6 +176,9 @@ func Warn(v ...interface{}) {
 	//		console("warn", v)
 	//	}
 	defaultlog.warn(v...)
+}
+func Warnf(format string, v ...interface{}) {
+	defaultlog.warn(fmt.Sprintf(format, v...))
 }
 func Error(v ...interface{}) {
 	//	if dailyRolling {
@@ -186,6 +197,9 @@ func Error(v ...interface{}) {
 	//	}
 	defaultlog.error(v...)
 }
+func Errorf(format string, v ...interface{}) {
+	defaultlog.error(fmt.Sprintf(format, v...))
+}
 func Fatal(v ...interface{}) {
 	//	if dailyRolling {
 	//		fileCheck()
@@ -202,6 +216,9 @@ func Fatal(v ...interface{}) {
 	//		console("fatal", v)
 	//	}
 	defaultlog.fatal(v...)
+}
+func Fatalf(format string, v ...interface{}) {
+	defaultlog.fatal(fmt.Sprintf(format, v...))
 }
 
 func SetLevelFile(level LEVEL, dir, fileName string) {
