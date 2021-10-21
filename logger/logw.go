@@ -10,7 +10,6 @@ import (
 	"runtime/debug"
 	"strconv"
 	"sync"
-	"sync/atomic"
 	"time"
 )
 
@@ -353,7 +352,9 @@ func (this *fileBean) rename(rolltype _ROLLTYPE) {
 }
 
 func (this *fileBean) addsize(size int64) {
-	atomic.AddInt64(&this.filesize, size)
+	this.mu.Lock()
+	this.filesize += size
+	this.mu.Unlock()
 }
 
 func (this *fileBean) write(level string, v ...interface{}) {
